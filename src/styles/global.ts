@@ -7,8 +7,9 @@ export const GlobalStyle = createGlobalStyle`
     --green-font: #c7d84e;
     --button-color: #33af23;
     --default-font: #ffffff;
-    --delete-button: linear-gradient(45deg, #E90F0F 30%, #E90F0F 90%);
-    --edit-button: linear-gradient(45deg, #33af23 30%, #33af23 90%);
+    --delete-button: linear-gradient(45deg, #343a18 30%, #343a18 90%);
+    --edit-button: linear-gradient(45deg, #c7d84e 30%, #c7d84e 90%);
+    --back-button: linear-gradient(45deg, #33af23 30%, #343a18 90%);
   }
   
   * {

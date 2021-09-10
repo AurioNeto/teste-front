@@ -51,11 +51,11 @@ export function CreateExpense() {
       />
 
       <ButtonContainer>
-        <Button isSubmit>Salvar</Button>
+        <Button isSubmit color={'var(--edit-button)'}>Salvar</Button>
         <Button
           handleClick={() => {
             history.goBack();
-          }}
+          }} color={'var(--delete-button)'}
         >
           Voltar
         </Button>

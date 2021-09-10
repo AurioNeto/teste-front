@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin-top: 4rem;
+  margin-top: 2rem;
   max-width: 800px;
   display: flex;
   justify-content: center;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   align-items: center;
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     margin-bottom: 1rem;
   }
 
@@ -18,8 +18,7 @@ export const Container = styled.div`
     border-spacing: 0 0.5rem;
 
     th {
-      color: var(--green-font);
-      font-weight: 600;
+      color: var(--button-color);
       padding: 1rem 2rem;
       text-align: center;
       line-height: 1.5rem;
@@ -47,6 +46,24 @@ export const Container = styled.div`
   }
 `;
 
+export const TableControl = styled.div`
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem;
+  align-items: center;
+`;
+
+export const Pagination = styled.div`
+  max-width: 120px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem;
+  align-items: center;
+`
+
 export const Totals = styled.div`
   max-width: 800px;
   width: 100%;
@@ -57,4 +74,4 @@ export const Totals = styled.div`
   h2 {
     font-size: 1.25rem;
   }
-`
+`;
