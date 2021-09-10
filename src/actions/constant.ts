@@ -1,13 +1,22 @@
 import axios from "axios";
 
-const session = localStorage.getItem("session");
-const token = session && JSON.parse(session).token;
-
 export const APP_API = 'https://sofit-front-challenge.herokuapp.com';
 
 export const api = axios.create({
-    baseURL: APP_API,
-    headers: { Authorization: `Bearer ${token}` },
+    baseURL: APP_API
+});
+
+api.interceptors.request.use((config) => {
+    const token = localStorage.getItem("token");
+
+    try {
+        if(token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config
+    } catch (err) {
+        return err
+    }
 });
 
 api.interceptors.response.use(

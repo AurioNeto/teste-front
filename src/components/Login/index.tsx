@@ -4,12 +4,12 @@ import * as M from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { Button } from "../Button";
-import { getStart } from "../../actions/auth"
+import { getStart } from "../../actions/auth";
 import { useHistory } from "react-router-dom";
 
 const CssTextField = withStyles({
   root: {
-    width: '250px',
+    width: "250px",
     color: "white !important",
     "& label": {
       color: "#c7d84e",
@@ -28,13 +28,24 @@ export function Login() {
 
   const history = useHistory();
 
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    localStorage.setItem("token", "tokenHolder");
+    document.location.reload();
+  }
+
   const handleSubmit = async (event: any) => {
-    event.preventDefault();
-    const {data}: any = await getStart(email);
+    try {
+      event.preventDefault();
+      const { data }: any = await getStart(email);
 
-    localStorage.setItem('session', JSON.stringify(data))
+      localStorage.setItem("token", data.token);
 
-    history.push('/expenses');
+      history.push("/expenses");
+    } catch {
+      alert('Insira um e-mail válido')
+    }
   };
 
   return (

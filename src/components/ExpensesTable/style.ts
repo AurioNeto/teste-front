@@ -50,19 +50,10 @@ export const TableControl = styled.div`
   max-width: 800px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 0.5rem;
   align-items: center;
 `;
-
-export const Pagination = styled.div`
-  max-width: 120px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin: 0.5rem;
-  align-items: center;
-`
 
 export const Totals = styled.div`
   max-width: 800px;

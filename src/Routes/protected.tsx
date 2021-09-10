@@ -1,8 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-const session = localStorage.getItem("session");
-const token = session && JSON.parse(session).token;
+const token = localStorage.getItem("token");
 
 const ProtectedRoute = ({
   children,

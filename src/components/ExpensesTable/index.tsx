@@ -71,9 +71,7 @@ export function ExpensesTable() {
         <tbody>
           {expenses.map((expense: any) => (
             <tr key={expense._id}>
-              <td>
-                {handleDate(expense.date)}
-              </td>
+              <td>{handleDate(expense.date)}</td>
               <td>{expense.item}</td>
               <td>
                 {new Intl.NumberFormat("pt-BR", {
@@ -115,13 +113,24 @@ export function ExpensesTable() {
           }).format(summary.total)}
         </h2>
       </S.Totals>
-      <Button
-        handleClick={() => {
-          history.push("/new-expense");
-        }}
-      >
-        <p>Nova Despesa</p>
-      </Button>
+
+      <S.TableControl>
+        <Button
+          handleClick={() => {
+            history.push("/new-expense");
+          }}
+        >
+          <p>Nova Despesa</p>
+        </Button>
+        <Button
+          color={"var(--back-button)"}
+          handleClick={() => {
+            history.push("/");
+          }}
+        >
+          <p>Sair</p>
+        </Button>
+      </S.TableControl>
     </S.Container>
   );
 }
