@@ -2,7 +2,7 @@ import React, { FormEvent, useState } from "react";
 import { createExpense } from "../../actions/expenses";
 import { useHistory } from "react-router-dom";
 import { Button } from "../Button";
-import { Container } from "./style";
+import { ButtonContainer, Container } from "./style";
 
 export function CreateExpense() {
   const [date, setDate] = useState("2021-01-01");
@@ -13,13 +13,17 @@ export function CreateExpense() {
   async function handleNewExpense(event: FormEvent) {
     event.preventDefault();
 
-    await createExpense({
-      date,
-      value,
-      item,
-    });
+    try {
+      await createExpense({
+        date,
+        value,
+        item,
+      });
 
-    history.goBack();
+      return history.goBack();
+    } catch (err) {
+      alert("Preenhca todos os dados!");
+    }
   }
 
   return (
@@ -46,7 +50,16 @@ export function CreateExpense() {
         onChange={(event) => setValue(Number(event.target.value))}
       />
 
-      <Button isSubmit>Salvar</Button>
+      <ButtonContainer>
+        <Button isSubmit>Salvar</Button>
+        <Button
+          handleClick={() => {
+            history.goBack();
+          }}
+        >
+          Voltar
+        </Button>
+      </ButtonContainer>
     </Container>
   );
 }

@@ -24,12 +24,15 @@ export const Container = styled.form`
     font-weight: 400;
     font-size: 1rem;
 
-    &::placeholder {
-      color: var(--text-body); 
-    }
-
     & + input {
       margin-top: 1rem;
     }
   }
+`
+
+export const ButtonContainer = styled.div`
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 `

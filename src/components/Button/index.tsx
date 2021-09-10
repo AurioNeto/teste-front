@@ -10,8 +10,6 @@ interface ButtonProps {
   handleClick?: () => void;
 }
 
-
-
 export function Button({ children, color, isSubmit, small, handleClick }: ButtonProps) {
   const useStyles = makeStyles({
     root: {

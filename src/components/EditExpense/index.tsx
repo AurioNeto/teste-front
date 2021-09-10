@@ -2,14 +2,14 @@ import React, { FormEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { editExpense } from "../../actions/expenses";
 import { Button } from "../Button";
-import { Container } from "./style";
+import { ButtonContainer, Container } from "./style";
 
 export function EditExpense() {
   const history = useHistory();
   const edit = localStorage.getItem("editing");
   const expense = edit && JSON.parse(edit);
 
-  const convertedDate = new Date(expense.date)
+  const convertedDate = new Date(expense.date);
   const offset = convertedDate.getTimezoneOffset();
   const newDate = new Date(convertedDate.getTime() + offset * 60 * 1000);
   const formatedDate = newDate.toISOString().split("T")[0];
@@ -21,13 +21,17 @@ export function EditExpense() {
   async function handleEditExpense(event: FormEvent) {
     event.preventDefault();
 
-    await editExpense(expense._id, {
-      date: date,
-      value: value,
-      item: item
-    })
+    try {
+      await editExpense(expense._id, {
+        date: date,
+        value: value,
+        item: item,
+      });
 
-    history.goBack()
+      history.goBack();
+    } catch (err) {
+      alert("Confira todos os dados!!");
+    }
   }
 
   return (
@@ -54,7 +58,16 @@ export function EditExpense() {
         onChange={(event) => setValue(Number(event.target.value))}
       />
 
-      <Button isSubmit>Salvar</Button>
+      <ButtonContainer>
+        <Button isSubmit>Salvar</Button>
+        <Button
+          handleClick={() => {
+            history.goBack();
+          }}
+        >
+          Voltar
+        </Button>
+      </ButtonContainer>
     </Container>
   );
 }

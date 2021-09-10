@@ -16,9 +16,7 @@ export function ExpensesTable() {
 
   async function listExpenses() {
     const { data }: any = await getExpenses().catch((e) => console.log(e));
-
-    console.log(data);
-
+    
     if (data) {
       setExpenses(data);
     }
