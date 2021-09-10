@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
-import _ from "lodash";
 import { Button } from "../Button";
 import {
   deleteExpense,
@@ -10,23 +9,6 @@ import {
   getExpenses,
 } from "../../actions/expenses";
 import { useHistory } from "react-router-dom";
-import { TextField, withStyles } from "@material-ui/core";
-
-const PaginationFields = withStyles({
-  root: {
-    margin: "8px 0px 0px 12px",
-    color: "white !important",
-    "& label": {
-      color: "#343a18",
-    },
-    "& label.Mui-focused": {
-      color: "#33af23",
-    },
-    "& .MuiInput-underline:after": {
-      borderBottomColor: "#33af23",
-    },
-  },
-})(TextField);
 
 export function ExpensesTable() {
   const [expenses, setExpenses] = useState([]);
